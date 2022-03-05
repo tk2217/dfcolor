@@ -17,6 +17,11 @@ def loadProps(name):
 
     return out
 
+def horrible_bungee_format_color(color):
+    out = "&x"
+    for c in color:
+        out += f"${c}"
+    return out
 
 named = loadProps("named.txt")
 data = loadProps("data.txt")
@@ -29,4 +34,9 @@ for k, v in data.items():
         pts = v.split(", ")
         color = "%02x%02x%02x" % (int(pts[0]), int(pts[1]), int(pts[2]))
     # print(f"<#{color}>{k}: #{color}")
-    print(f"<span class=\"mc-font cls\" style=\"color: #{color};\">{k}: #{color}</span><br/>")
+    print(f"""
+        <span class=\"mc-font cls\" style=\"color: #{color};\">
+            <span class="sel">{k}</span>: <span class="sel">#{color}</span> - <span class="sel">{horrible_bungee_format_color(color)}</span>
+        </span>
+        <br/>
+    """)
