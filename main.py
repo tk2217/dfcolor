@@ -20,7 +20,7 @@ def loadProps(name):
 def horrible_bungee_format_color(color):
     out = "&x"
     for c in color:
-        out += f"${c}"
+        out += f"&{c}"
     return out
 
 named = loadProps("named.txt")
