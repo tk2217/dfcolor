@@ -15,6 +15,6 @@ for k, v in data.items():
         b = int(pts[2])
         color = r + g + b
     
-    print(f"    public static final int {k} = {hex(color)};")
+    print(f"    public static final int {k} = 0x{hex(color)[2:].rjust(6, '0')};")
 
 print("}")
